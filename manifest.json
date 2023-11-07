@@ -1,0 +1,58 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "hcm.fab.myaddresses.my_addresses_ext",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}"
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://addresses",
+            "favIcon": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "dependencies": {
+            "minUI5Version": "1.44.47"
+        },
+        "extends": {
+            "component": "hcm.fab.myaddresses",
+            "extensions": {
+                "sap.ui.viewReplacements": {
+                    "hcm.fab.myaddresses.countryViews.01_Display_Default_V001": {
+                        "viewName": "hcm.fab.myaddresses.my_addresses_ext.countryViews.01_Display_Default_V001Custom",
+                        "type": "XML"
+                    },
+                    "hcm.fab.myaddresses.countryViews.01_Edit_Default_V001": {
+                        "viewName": "hcm.fab.myaddresses.my_addresses_ext.countryViews.01_Edit_Default_V001Custom",
+                        "type": "XML"
+                    }
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zaddresses_ext/webapp",
+        "_version": "1.1.0"
+    }
+}

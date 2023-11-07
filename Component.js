@@ -1,0 +1,1 @@
+jQuery.sap.declare("hcm.fab.myaddresses.my_addresses_ext.Component");sap.ui.component.load({name:"hcm.fab.myaddresses",url:"/sap/bc/ui5_ui5/sap/HCMFAB_ADRS_MAN"});this.hcm.fab.myaddresses.Component.extend("hcm.fab.myaddresses.my_addresses_ext.Component",{metadata:{manifest:"json"}});

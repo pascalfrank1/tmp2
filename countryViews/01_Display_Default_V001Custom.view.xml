@@ -1,0 +1,47 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View controllerName="hcm.fab.myaddresses.controller.CommonCountryDisplayController" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:hcmCommon="hcm.fab.lib.common" xmlns:layout="sap.ui.layout">
+	<f:SimpleForm id="RecordForm" minWidth="1024" editable="{device>/system/desktop}" layout="ResponsiveGridLayout" labelSpanL="3"
+		emptySpanL="1" columnsL="2" labelSpanM="4" emptySpanM="1" columnsM="2" title="{RecordState>/recordTitle}" adjustLabelSpan="false">
+		<f:toolbar>
+			<!-- Toolbar Fragment -->
+			<core:Fragment fragmentName="hcm.fab.lib.common.view.fragment.PersInfoRecordToolbar" type="XML"/>
+		</f:toolbar>
+		<f:content>
+			<core:Title text="{i18n>groupTitleAddress}"/>
+			<!-- ContactName / NAME2 -->
+			<Label text="Name der Kontaktperson" id="lblContactName" labelFor="txtContactName" visible="{FieldStates>/NAME2/Visible}"/>
+			<Text id="txtContactName" text="{ContactName}" visible="{FieldStates>/NAME2/Visible}"/>
+			<!-- StreetAndHousenumber / STRAS -->
+			<Label text="{/#Address01/StreetAndHousenumber/@sap:label}" id="lblStreetAndHousenumber" labelFor="txtStreetAndHousenumber"
+				visible="{FieldStates>/STRAS/Visible}"/>
+			<Text id="txtStreetAndHousenumber" text="{StreetAndHousenumber}" visible="{FieldStates>/STRAS/Visible}"/>
+			<!-- PostalCode / PSTLZ -->
+			<Label text="{/#Address01/PostalCode/@sap:label}" id="lblPostalCode" labelFor="txtPostalCode" visible="{FieldStates>/PSTLZ/Visible}"/>
+			<Text id="txtPostalCode" text="{PostalCode}" visible="{FieldStates>/PSTLZ/Visible}"/>
+			<!-- City / ORT01 -->
+			<Label text="{/#Address01/City/@sap:label}" id="lblCity" labelFor="txtCity" visible="{FieldStates>/ORT01/Visible}"/>
+			<Text id="txtCity" text="{City}" visible="{FieldStates>/ORT01/Visible}"/>
+			<!-- District / ORT02 -->
+			<Label text="{/#Address01/District/@sap:label}" id="lblDistrict" labelFor="txtDistrict" visible="{FieldStates>/ORT02/Visible}"/>
+			<Text id="txtDistrict" text="{District}" visible="{FieldStates>/ORT02/Visible}"/>
+			<!--THE COUNTRY TEXT FROM XX -->
+			<Label text="{/#Address/CountryId/@sap:label}" id="lblCountryId" labelFor="txtCountryId" visible="{FieldStates>/LAND1/Visible}"/>
+			<Text id="txtCountryId" text="{parts:[{path:'CountryId'}], formatter:'.formatCountryText'}" visible="{FieldStates>/LAND1/Visible}"/>
+			<!-- TelephoneNumber / TELNR -->
+			<Label text="{/#Address01/TelephoneNumber/@sap:label}" id="lblTelephoneNumber" labelFor="txtTelephoneNumber"
+				visible="{FieldStates>/TELNR/Visible}"/>
+			<Text id="txtTelephoneNumber" text="{TelephoneNumber}" visible="{FieldStates>/TELNR/Visible}"/>
+			<!-- WorkDistance / ENTKM -->
+			<Label text="{/#Address01/WorkDistance/@sap:label}" id="lblWorkDistance" labelFor="txtWorkDistance" visible="{FieldStates>/ENTKM/Visible}"/>
+			<Text id="txtWorkDistance" text="{WorkDistance}" visible="{FieldStates>/ENTKM/Visible}"/>
+			<!--Allow adding content to the Record Form -->
+			<core:ExtensionPoint name="extensionFormContent"/>
+		</f:content>
+	</f:SimpleForm>
+</mvc:View>

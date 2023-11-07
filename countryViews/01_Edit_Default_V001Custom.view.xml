@@ -1,0 +1,57 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View controllerName="hcm.fab.myaddresses.controller.CommonCountryController" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:hcmCommon="hcm.fab.lib.common" xmlns:layout="sap.ui.layout">
+	<f:SimpleForm id="RecordForm" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="3"
+		emptySpanM="1" columnsL="1" columnsM="1" title="{UIProperties>/selectedSubtypeText}">
+		<f:content>
+			<core:Title text="{i18n>groupTitleAddress}"/>
+			<!-- ContactName / NAME2 -->
+			<Label text="Name der Kontaktperson" id="lblContactName" labelFor="inpContactName" visible="{FieldStates>/NAME2/Visible}"
+				required="{FieldStates>/NAME2/Required}"/>
+			<Input id="inpContactName" value="{ContactName}" visible="{FieldStates>/NAME2/Visible}" editable="{FieldStates>/NAME2/Editable}"
+				required="{FieldStates>/NAME2/Required}" maxLength="{=Number(${/#Address01/ContactName/@maxLength})}" fieldGroupIds="PersInfoValidation"/>
+			<!-- StreetAndHousenumber / STRAS -->
+			<Label text="{/#Address01/StreetAndHousenumber/@sap:label}" id="lblStreetAndHousenumber" labelFor="inpStreetAndHousenumber"
+				visible="{FieldStates>/STRAS/Visible}" required="{FieldStates>/STRAS/Required}"/>
+			<Input id="inpStreetAndHousenumber" value="{StreetAndHousenumber}" visible="{FieldStates>/STRAS/Visible}"
+				editable="{FieldStates>/STRAS/Editable}" required="{FieldStates>/STRAS/Required}"
+				maxLength="{=Number(${/#Address01/StreetAndHousenumber/@maxLength})}" fieldGroupIds="PersInfoValidation"/>
+			<!-- PostalCode / PSTLZ -->
+			<Label text="{/#Address01/PostalCode/@sap:label}" id="lblPostalCode" labelFor="inpPostalCode" visible="{FieldStates>/PSTLZ/Visible}"
+				required="{FieldStates>/PSTLZ/Required}"/>
+			<Input id="inpPostalCode" value="{PostalCode}" visible="{FieldStates>/PSTLZ/Visible}" editable="{FieldStates>/PSTLZ/Editable}"
+				required="{FieldStates>/PSTLZ/Required}" maxLength="{=Number(${/#Address01/PostalCode/@maxLength})}" fieldGroupIds="PersInfoValidation"/>
+			<!-- City / ORT01 -->
+			<Label text="{/#Address01/City/@sap:label}" id="lblCity" labelFor="inpCity" visible="{FieldStates>/ORT01/Visible}"
+				required="{FieldStates>/ORT01/Required}"/>
+			<Input id="inpCity" value="{City}" visible="{FieldStates>/ORT01/Visible}" editable="{FieldStates>/ORT01/Editable}"
+				required="{FieldStates>/ORT01/Required}" maxLength="{=Number(${/#Address01/City/@maxLength})}" fieldGroupIds="PersInfoValidation"/>
+			<!-- District / ORT02 -->
+			<Label text="{/#Address01/District/@sap:label}" id="lblDistrict" labelFor="inpDistrict" visible="{FieldStates>/ORT02/Visible}"
+				required="{FieldStates>/ORT02/Required}"/>
+			<Input id="inpDistrict" value="{District}" visible="{FieldStates>/ORT02/Visible}" editable="{FieldStates>/ORT02/Editable}"
+				required="{FieldStates>/ORT02/Required}" maxLength="{=Number(${/#Address01/District/@maxLength})}" fieldGroupIds="PersInfoValidation"/>
+			<!--THE COUNTRY TEXT FROM XX -->
+			<Label text="{/#Address/CountryId/@sap:label}" id="lblCountryId" labelFor="inpCountryId" visible="{FieldStates>/LAND1/Visible}"/>
+			<Input id="inpCountryId" value="{parts:[{path:'CountryId'}], formatter:'.formatCountryText'}" editable="false"
+				visible="{FieldStates>/LAND1/Visible}"/>
+			<!-- TelephoneNumber / TELNR -->
+			<Label text="{/#Address01/TelephoneNumber/@sap:label}" id="lblTelephoneNumber" labelFor="inpTelephoneNumber"
+				visible="{FieldStates>/TELNR/Visible}" required="{FieldStates>/TELNR/Required}"/>
+			<Input id="inpTelephoneNumber" value="{TelephoneNumber}" visible="{FieldStates>/TELNR/Visible}" editable="{FieldStates>/TELNR/Editable}"
+				required="{FieldStates>/TELNR/Required}" maxLength="{=Number(${/#Address01/TelephoneNumber/@maxLength})}" fieldGroupIds="PersInfoValidation"/>
+			<!-- WorkDistance / ENTKM -->
+			<Label text="{/#Address01/WorkDistance/@sap:label}" id="lblWorkDistance" labelFor="inpWorkDistance" visible="{FieldStates>/ENTKM/Visible}"
+				required="{FieldStates>/ENTKM/Required}"/>
+			<Input id="inpWorkDistance" value="{WorkDistance}" visible="{FieldStates>/ENTKM/Visible}" editable="{FieldStates>/ENTKM/Editable}"
+				required="{FieldStates>/ENTKM/Required}" fieldGroupIds="PersInfoValidation"/>
+			<!--Allow adding content to the Record Form -->
+			<core:ExtensionPoint name="extensionFormContent"/>
+		</f:content>
+	</f:SimpleForm>
+</mvc:View>
